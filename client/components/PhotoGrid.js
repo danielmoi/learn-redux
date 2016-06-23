@@ -10,7 +10,8 @@ const PhotoGrid = React.createClass({
             <Photo
               { ...this.props }
               key={ index }
-              post={ post } />  
+              index={ index }
+              post={ post } />
           )
           })
         }
