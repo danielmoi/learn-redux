@@ -11,7 +11,19 @@ import App from './components/App';
 import Single from './components/Single';
 import PhotoGrid from './components/PhotoGrid';
 
+import Raven from 'raven-js';
+import { sentry_url, logException } from './data/config';
 
+Raven.config(sentry_url, {
+  tags: {
+    git_commit: 'asdf4398hgn0wroilkng',
+    user_level: 'editor'
+  }
+}).install();
+
+logException(new Error('Download failed!'), {
+  email: 'me@hello.com'
+});
 
 const router = (
   <Provider store={ store }>
